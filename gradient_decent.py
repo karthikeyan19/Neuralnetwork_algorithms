@@ -40,7 +40,7 @@ def do_gradient_decent():
         for x,y in zip(X,Y):
             dw +=grad_w(w,b,x,y)
             db +=grad_b(w,b,x,y)
-
+        #adam loss function
         m_w = beta1 * m_w +(1-beta1)*dw
         m_b = beta1 * m_b +(1-beta1)*db
 
@@ -54,18 +54,18 @@ def do_gradient_decent():
         b_history.append(b)
         error_history.append(error(w,b))
     from mpl_toolkits.mplot3d import axes3d
-    #fig = plt.figure()
-    #ax = fig.gca(projection='3d')
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
 
     # Plot a basic wireframe.
-    #from matplotlib import cm
+    from matplotlib import cm
 
-    #surf = ax.plot_surface(w_history, b_history, error_history,cmap=cm.coolwarm,
-    #                   linewidth=0, antialiased=False)
+    surf = ax.plot_surface(w_history, b_history, error_history,cmap=cm.coolwarm,
+                       linewidth=0, antialiased=False)
     print(error_history)
-    #fig.colorbar(surf, shrink=0.5, aspect=5)
-    #plt.contour(w_history, b_history, error_history)
-    #plt.show()
+    fig.colorbar(surf, shrink=0.5, aspect=5)
+    plt.contour(w_history, b_history, error_history)
+    plt.show()
         
     
 do_gradient_decent()    
